@@ -2,13 +2,12 @@ from sys import argv
 
 import datetime as dt
 
-from celery.task
+from celeryd import app
 
 
 def formula(x, y):
     task1 = multiply.apply_async((x, y), countdown=10)
     task2 = save_to_file.apply_async((x, dt.datetime.now().isoformat(), 'formula'), countdown=10)
-    taskset = TaskSet
     return task1, task2
 
 
